@@ -18,17 +18,20 @@ def main():
     else:
         print('Uploaded file is not a .jpeg or .png .jpg file')
 
-    # compress the image
-    image_compressor = ImageCompressor(image_file)
-    image_compressor.load_image()
-    image_compressor.calculate_image_size()
-    image_compressor.image_data_normalize()
-    compressed_image = image_compressor.k_means_compression()
+    with st.spinner('Compressing Image'):
+        # compress the image
+        image_compressor = ImageCompressor(image_file)
+        image_compressor.load_image()
+        image_compressor.calculate_image_size()
+        image_compressor.image_data_normalize()
+        compressed_image = image_compressor.k_means_compression()
 
-    # convert PIL image to byte stream
-    compressed_image_bytes = BytesIO()
-    compressed_image.save(compressed_image_bytes, format='JPEG')
-    compressed_image_bytes = compressed_image_bytes.getvalue()
+        # convert PIL image to byte stream
+        compressed_image_bytes = BytesIO()
+        compressed_image.save(compressed_image_bytes, format='JPEG')
+        compressed_image_bytes = compressed_image_bytes.getvalue()
+
+    st.success('Compressed! Download the file')
 
     # download button for image download
     btn = st.download_button(
