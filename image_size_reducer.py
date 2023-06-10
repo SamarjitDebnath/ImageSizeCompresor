@@ -44,6 +44,10 @@ def main():
 
 if __name__ == '__main__':
     try:
+        st.set_page_config(
+            page_title="Image Size Compressor",
+            page_icon="brain",
+        )
         main()
     except Exception as e:
         print(f'Error: Something went wrong {e}')
