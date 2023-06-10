@@ -1,6 +1,6 @@
 import streamlit as st
 from io import BytesIO
-from lib.compressor import ImageCompressor
+from lib_compressor.compressor import ImageCompressor
 
 
 def main():
